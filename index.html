@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalTasker - Find Help Near You</title>
+    <link rel="stylesheet" href="newpig.css">
+</head>
+<body>
+    <!-- Page 1: Problem Type Selection -->
+    <div id="page1" class="page active">
+        <div class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="logo-section">
+                    <div class="logo">🏠 LocalTasker</div>
+                    <div class="tagline">Find trusted helpers within 5km of your location</div>
+                    <div class="features">✓ Fast • ✓ Reliable • ✓ Local • ✓ Verified</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1 class="main-title">What do you need help with?</h1>
+                <p class="subtitle">Select your problem type to get started</p>
+            </div>
+
+            <!-- Main Categories -->
+            <div class="services-mega-grid" id="mainCategories">
+                <div class="service-mega-card" onclick="showSubcategories('home')">
+                    <div class="service-icon-large">🏠</div>
+                    <div class="service-title-large">Home Services</div>
+                    <div class="service-desc-large">All your home-related needs</div>
+                    <div class="service-price">Trusted & Verified</div>
+                </div>
+
+                <div class="service-mega-card" onclick="showSubcategories('education')">
+                    <div class="service-icon-large">📚</div>
+                    <div class="service-title-large">Education Services</div>
+                    <div class="service-desc-large">Learning & guidance support</div>
+                    <div class="service-price">Expert Tutors</div>
+                </div>
+
+                <div class="service-mega-card" onclick="showSubcategories('custom')">
+                    <div class="service-icon-large">✍️</div>
+                    <div class="service-title-large">Custom Work</div>
+                    <div class="service-desc-large">Tell us what you need</div>
+                    <div class="service-price">Flexible Solutions</div>
+                </div>
+            </div>
+
+            <!-- Home Services Subcategories -->
+            <div class="subcategories-container" id="homeSubcategories" style="display: none;">
+                <div class="back-to-categories" onclick="showMainCategories()">
+                    ← Back to Main Categories
+                </div>
+                <h2 class="subcategory-title">🏠 Home Services</h2>
+                <div class="services-mega-grid">
+                    <div class="service-mega-card" onclick="selectService('packers-movers')">
+                        <div class="service-icon-large">📦</div>
+                        <div class="service-title-large">Packers and Movers</div>
+                        <div class="service-desc-large">Find Affordable and Trusted Packers and Movers</div>
+                        <div class="service-price">Starting from ₹2000</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('patient-care')">
+                        <div class="service-icon-large">🏥</div>
+                        <div class="service-title-large">Patient Care Services</div>
+                        <div class="service-desc-large">Professional Patient Care Service</div>
+                        <div class="service-price">Starting from ₹800/day</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('cleaning')">
+                        <div class="service-icon-large">🧹</div>
+                        <div class="service-title-large">Cleaning Services</div>
+                        <div class="service-desc-large">House cleaning, deep cleaning, sanitization</div>
+                        <div class="service-price">Starting from ₹300</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('appliance-repair')">
+                        <div class="service-icon-large">🔧</div>
+                        <div class="service-title-large">Home Appliances Repair</div>
+                        <div class="service-desc-large">Find top home appliances repair services</div>
+                        <div class="service-price">Starting from ₹400</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('electrical')">
+                        <div class="service-icon-large">⚡</div>
+                        <div class="service-title-large">Electrical Work</div>
+                        <div class="service-desc-large">Wire fixing, switches, outlets, circuit breakers</div>
+                        <div class="service-price">Starting from ₹200</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('plumbing')">
+                        <div class="service-icon-large">🚿</div>
+                        <div class="service-title-large">Plumbing</div>
+                        <div class="service-desc-large">Drainage, pipes, taps, water heaters</div>
+                        <div class="service-price">Starting from ₹300</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('carpenter')">
+                        <div class="service-icon-large">🔨</div>
+                        <div class="service-title-large">Carpentry</div>
+                        <div class="service-desc-large">Furniture, doors, windows, custom work</div>
+                        <div class="service-price">Starting from ₹500</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('painting')">
+                        <div class="service-icon-large">🎨</div>
+                        <div class="service-title-large">Painting</div>
+                        <div class="service-desc-large">Wall painting, home makeover, touch-ups</div>
+                        <div class="service-price">Starting from ₹800</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Services Subcategories -->
+            <div class="subcategories-container" id="educationSubcategories" style="display: none;">
+                <div class="back-to-categories" onclick="showMainCategories()">
+                    ← Back to Main Categories
+                </div>
+                <h2 class="subcategory-title">📚 Education Services</h2>
+                <div class="services-mega-grid">
+                    <div class="service-mega-card" onclick="selectService('school-tutor')">
+                        <div class="service-icon-large">👨‍🎓</div>
+                        <div class="service-title-large">Home Tutors (School)</div>
+                        <div class="service-desc-large">Qualified teachers for school students (1st-12th)</div>
+                        <div class="service-price">Starting from ₹500/hour</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('college-counselor')">
+                        <div class="service-icon-large">🎓</div>
+                        <div class="service-title-large">College Counselors</div>
+                        <div class="service-desc-large">Career guidance and counseling for college students</div>
+                        <div class="service-price">Starting from ₹800/session</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('subject-specialist')">
+                        <div class="service-icon-large">📖</div>
+                        <div class="service-title-large">Subject Specialists</div>
+                        <div class="service-desc-large">Expert tutors for specific subjects (Maths, Science, etc.)</div>
+                        <div class="service-price">Starting from ₹600/hour</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('exam-prep')">
+                        <div class="service-icon-large">📝</div>
+                        <div class="service-title-large">Exam Preparation</div>
+                        <div class="service-desc-large">JEE, NEET, UPSC, CAT and other competitive exams</div>
+                        <div class="service-price">Starting from ₹1000/hour</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('language-tutor')">
+                        <div class="service-icon-large">🗣️</div>
+                        <div class="service-title-large">Language Tutors</div>
+                        <div class="service-desc-large">English, Hindi, and foreign language tutors</div>
+                        <div class="service-price">Starting from ₹400/hour</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('skill-training')">
+                        <div class="service-icon-large">💻</div>
+                        <div class="service-title-large">Skill Training</div>
+                        <div class="service-desc-large">Computer skills, coding, digital marketing</div>
+                        <div class="service-price">Starting from ₹800/hour</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Work Subcategories -->
+            <div class="subcategories-container" id="customSubcategories" style="display: none;">
+                <div class="back-to-categories" onclick="showMainCategories()">
+                    ← Back to Main Categories
+                </div>
+                <h2 class="subcategory-title">✍️ Custom Work</h2>
+                <div class="services-mega-grid">
+                    <div class="service-mega-card" onclick="selectService('content-writing')">
+                        <div class="service-icon-large">✏️</div>
+                        <div class="service-title-large">Content Writing</div>
+                        <div class="service-desc-large">Articles, blogs, copywriting, and creative content</div>
+                        <div class="service-price">Starting from ₹300/article</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('graphic-design')">
+                        <div class="service-icon-large">🎨</div>
+                        <div class="service-title-large">Graphic Design</div>
+                        <div class="service-desc-large">Logos, flyers, social media graphics, branding</div>
+                        <div class="service-price">Starting from ₹500/design</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('data-entry')">
+                        <div class="service-icon-large">⌨️</div>
+                        <div class="service-title-large">Data Entry</div>
+                        <div class="service-desc-large">Excel work, typing, data processing</div>
+                        <div class="service-price">Starting from ₹200/hour</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('research-work')">
+                        <div class="service-icon-large">🔍</div>
+                        <div class="service-title-large">Research Work</div>
+                        <div class="service-desc-large">Market research, academic research, surveys</div>
+                        <div class="service-price">Starting from ₹600/project</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('translation')">
+                        <div class="service-icon-large">🌐</div>
+                        <div class="service-title-large">Translation Services</div>
+                        <div class="service-desc-large">Document translation, language conversion</div>
+                        <div class="service-price">Starting from ₹5/word</div>
+                    </div>
+
+                    <div class="service-mega-card" onclick="selectService('custom-other')">
+                        <div class="service-icon-large">💡</div>
+                        <div class="service-title-large">Tell Us Your Need</div>
+                        <div class="service-desc-large">Any other custom work you need done</div>
+                        <div class="service-price">Custom Quote</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-btn-container">
+                <button class="next-btn" onclick="goToPage2()" disabled id="nextBtn1">
+                    Continue to Details →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Problem Details Form -->
+    <div id="page2" class="page">
+        <div class="page-header">
+            <div class="back-btn" onclick="goToPage1()">← Back</div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 66%"></div>
+            </div>
+            <div class="page-indicator">Step 2 of 3</div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h1 class="main-title">Tell us about your problem</h1>
+                <p class="subtitle">Provide details so we can find the perfect helper</p>
+            </div>
+
+            <div class="form-container">
+                <div class="selected-service-display">
+                    <div class="selected-service-icon" id="selectedIcon">🔧</div>
+                    <div class="selected-service-text">
+                        <span id="selectedServiceName">Selected Service</span>
+                        <button class="change-service" onclick="goToPage1()">Change</button>
+                    </div>
+                </div>
+
+                <form id="problemForm" class="problem-form">
+                    <div class="form-section">
+                        <h3 class="form-section-title">📤 Upload Problem Photos</h3>
+                        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                            <div class="upload-icon">📸</div>
+                            <div class="upload-text">Click to upload photos of your problem</div>
+                            <div class="upload-subtext">Help us understand better with images</div>
+                            <button type="button" class="upload-btn">Choose Photos</button>
+                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">👤 Your Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your contact number" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">⚡ Service Details</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="urgency">How Urgent?</label>
+                                <select id="urgency" name="urgency" required>
+                                    <option value="">Select urgency</option>
+                                    <option value="low">🟢 Not urgent (within week)</option>
+                                    <option value="medium">🟡 Moderate (within 2 days)</option>
+                                    <option value="high">🔴 Urgent (today/tomorrow)</option>
+                                    <option value="emergency">🆘 Emergency (right now)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="budget">Your Budget</label>
+                                <select id="budget" name="budget" required>
+                                    <option value="">Select budget range</option>
+                                    <option value="low">₹ 0 - 500</option>
+                                    <option value="medium">₹ 500 - 2000</option>
+                                    <option value="high">₹ 2000 - 5000</option>
+                                    <option value="premium">₹ 5000+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">📍 Location & Description</h3>
+                        <div class="input-group">
+                            <label for="address">Your Address</label>
+                            <input type="text" id="address" name="address" placeholder="Enter your full address" required>
+                            <div class="location-buttons">
+                                <button type="button" class="location-btn small" onclick="getLocation()">📍 Use GPS</button>
+                                <button type="button" class="location-btn small" onclick="manualLocation()">📝 Manual</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="description">Describe Your Problem</label>
+                            <textarea id="description" name="description" placeholder="Explain what's wrong and what help you need. Be as detailed as possible..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="next-btn-container">
+                        <button type="button" class="next-btn" onclick="goToPage3()">
+                            🔍 Find Helpers Near Me
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: About Us & Success -->
+    <div id="page3" class="page">
+        <div class="page-header">
+            <div class="back-btn" onclick="goToPage2()">← Back</div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 100%"></div>
+            </div>
+            <div class="page-indicator">Success!</div>
+        </div>
+
+        <div class="container">
+            <div class="success-section">
+                <div class="success-icon">🎉</div>
+                <h1 class="success-title">Request Submitted Successfully!</h1>
+                <p class="success-subtitle">We're finding the best helpers near you</p>
+                
+                <div class="success-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3-5</div>
+                        <div class="stat-label">Helpers will contact you</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15 min</div>
+                        <div class="stat-label">Average response time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5km</div>
+                        <div class="stat-label">Search radius</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="about-title">About LocalTasker</h2>
+                <div class="about-content">
+                    <div class="about-story">
+                        <h3>Our Story</h3>
+                        <p>LocalTasker was founded in 2024 with a simple mission: to connect people who need help with skilled professionals in their neighborhood. We believe that every problem deserves a quick, reliable solution.</p>
+                        
+                        <div class="founders-info">
+                            <h4>Meet the Makers</h4>
+                            <div class="founder-card">
+                                <div class="founder-avatar">👨‍💻</div>
+                                <div class="founder-details">
+                                    <div class="founder-name">[Your Name]</div>
+                                    <div class="founder-role">Founder & CEO</div>
+                                    <div class="founder-bio">Passionate about solving everyday problems through technology</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-stats-section">
+                        <h3>Our Impact</h3>
+                        <div class="impact-stats">
+                            <div class="impact-item">
+                                <div class="impact-number">1000+</div>
+                                <div class="impact-label">Problems Solved</div>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-number">500+</div>
+                                <div class="impact-label">Verified Helpers</div>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-number">50+</div>
+                                <div class="impact-label">Cities Covered</div>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-number">4.8★</div>
+                                <div class="impact-label">Average Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mission-section">
+                        <h3>Our Mission</h3>
+                        <p>To make quality help accessible to everyone, everywhere. We're building a community where neighbors help neighbors, and no problem is too small to solve.</p>
+                        
+                        <div class="values">
+                            <div class="value-item">
+                                <div class="value-icon">🤝</div>
+                                <div class="value-title">Trust</div>
+                                <div class="value-desc">All helpers are verified</div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">⚡</div>
+                                <div class="value-title">Speed</div>
+                                <div class="value-desc">Quick response times</div>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">💰</div>
+                                <div class="value-title">Fair Pricing</div>
+                                <div class="value-desc">Transparent costs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3>Need Help or Have Questions?</h3>
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-info">
+                            <div class="contact-title">Call Us</div>
+                            <div class="contact-detail">+91 9876543210</div>
+                        </div>
+                    </div>
+                    <div class="contact-option">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-info">
+                            <div class="contact-title">Email Us</div>
+                            <div class="contact-detail">help@localtasker.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-option">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-info">
+                            <div class="contact-title">Chat Support</div>
+                            <div class="contact-detail">Available 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="restart-section">
+                <button class="restart-btn" onclick="restartProcess()">
+                    🏠 Submit Another Request
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="alpha.js"></script>
+</body>
+</html>
